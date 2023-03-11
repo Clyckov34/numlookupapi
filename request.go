@@ -5,6 +5,8 @@ import (
 	"errors"
 	"net/http"
 	"time"
+
+	"github.com/Clyckov34/numlookupapi/pkg/check"
 )
 
 type Params struct {
@@ -13,7 +15,7 @@ type Params struct {
 
 // GetRequest запрос данных
 func (m *Params) GetRequest(nubmer string) (Response, error) {
-	if err := PhoneNumberStruct(nubmer); err != nil {
+	if err := check.PhoneNumberStruct(nubmer); err != nil {
 		return Response{}, err
 	}
 

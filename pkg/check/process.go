@@ -1,4 +1,4 @@
-package numlookupapi
+package check
 
 import (
 	"errors"
