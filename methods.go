@@ -38,8 +38,18 @@ func (m *Response) Data() (Body, error) {
 	return bodyJson, nil
 }
 
+// JSON Вывод полный формат данных в Json
+func (m *Response) JSON() (string, error) {
+	body, err := io.ReadAll(m.Body)
+	if err != nil {
+		return "", err
+	}
+
+	return string(body), nil
+}
+
 // PhoneValid валидность номера.
-// Образец: true 
+// Образец: true
 func (m *Body) PhoneValid() bool {
 	return m.Valid
 }
