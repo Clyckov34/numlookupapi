@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"net/http"
-	"nlkapi/pkg/check"
 	"time"
 )
 
@@ -14,7 +13,7 @@ type Params struct {
 
 // GetRequest запрос данных
 func (m *Params) GetRequest(nubmer string) (Response, error) {
-	if err := check.PhoneNumberStruct(nubmer); err != nil {
+	if err := PhoneNumberStruct(nubmer); err != nil {
 		return Response{}, err
 	}
 
