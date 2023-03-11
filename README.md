@@ -23,7 +23,7 @@ import "github.com/Clyckov34/numlookupapi"
 <p>Установка пакета</p>
 
 ```
-$ go get github.com/Clyckov34/numlookupapi
+go get github.com/Clyckov34/numlookupapi
 ```
 </div>
 <div>
