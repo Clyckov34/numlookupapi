@@ -28,6 +28,7 @@ $ go get github.com/Clyckov34/numlookupapi
 </div>
 <div>
     <h2>Пример: Общий вывод</h2>
+	<p>example.go:</p>
 
 ```go
 package main
