@@ -14,22 +14,20 @@
 </div>
 <div>
     <h2>Получить numlookupapi</h2>
-    <p>С поддержкой модуля Go просто добавьте следующий импорт</p> 
+    <p>Импортный пакет</p> 
 
 ```
 import "github.com/Clyckov34/numlookupapi"
 ```
 
-<p>к вашему коду, а затем go [build|run|test]автоматически получит необходимые зависимости</p>
-<p>В противном случае выполните следующую команду Go, чтобы установить numlookupapi пакет</p>
+<p>Установка пакета</p>
 
 ```
 $ go get github.com/Clyckov34/numlookupapi
 ```
 </div>
 <div>
-    <h2>Пример</h2>
-    <p>Сначала вам нужно импортировать пакет numlookupapi для использования numlookupapi, один из простейших примеров выглядит следующим образом example.go:</p>
+    <h2>Пример: Общий вывод</h2>
 
 ```go
 package main
@@ -55,9 +53,69 @@ func main() {
 	}
 
 	fmt.Println(result)
-	fmt.Println(result.PhoneLocalFormat())
 }
 
+```
+
+```
+$ go run example.go
+{true 79963567210 9963567210 +79963567210 +7 RU Russian Federation Volgograd Oblast LLC Skartel (YOTA) mobile}
+```
+
+</div>
+<div>
+    <h2>Пример: Вывод по конкретным данным</h2>
+    <p>example.go:</p>
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/Clyckov34/numlookupapi"
+)
+
+func main() {
+	var api = numlookupapi.Params{ApiKey: "API-KEY"}
+	response, err := api.GetRequest("+79963567210")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer response.Body.Close()
+
+	result, err := response.Data()
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println("Valid:", result.Valid)
+	fmt.Println("Number:", result.Number)
+	fmt.Println("Local Format:", result.LocalFormat)
+	fmt.Println("International Format:", result.InternationalFormat)
+	fmt.Println("Country Prefix:", result.CountryPrefix)
+	fmt.Println("Country Code:", result.CountryCode)
+	fmt.Println("Country Name:", result.CountryName)
+	fmt.Println("Location:", result.Location)
+	fmt.Println("Carrier:", result.Carrier)
+	fmt.Println("Line Type:", result.LineType)
+}
+
+```
+
+```
+$ go run example.go
+Valid: true
+Number: 79963567210
+Local Format: 9963567210
+International Format: +79963567210
+Country Prefix: +7
+Country Code: RU
+Country Name: Russian Federation
+Location: Volgograd Oblast
+Carrier: LLC Skartel (YOTA)
+Line Type: mobile
 ```
 
 </div>
