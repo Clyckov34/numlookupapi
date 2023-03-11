@@ -24,18 +24,18 @@ type Response struct {
 }
 
 // Data Выгрузка данных в структуру
-func (m *Response) Data() (Response, error) {
+func (m *Response) Data() (Body, error) {
 	body, err := io.ReadAll(m.Body)
 	if err != nil {
-		return Response{}, err
+		return Body{}, err
 	}
 
-	var bodyStruct Response
-	if err := json.Unmarshal(body, &bodyStruct); err != nil {
-		return Response{}, err
+	var bodyJson Body
+	if err := json.Unmarshal(body, &bodyJson); err != nil {
+		return Body{}, err
 	}
 
-	return bodyStruct, nil
+	return bodyJson, nil
 }
 
 // PhoneValid валидность номера.
