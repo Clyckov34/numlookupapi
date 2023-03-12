@@ -41,7 +41,10 @@ import (
 )
 
 func main() {
-	var api = numlookupapi.Params{ApiKey: "API-KEY"}
+	var api = numlookupapi.Params{
+		ApiKey: "API-KEY",
+	}
+
 	response, err := api.GetResponse("+79963567210")
 	if err != nil {
 		log.Fatalln(err)
@@ -79,7 +82,10 @@ import (
 )
 
 func main() {
-	var api = numlookupapi.Params{ApiKey: "API-KEY"}
+	var api = numlookupapi.Params{
+		ApiKey: "API-KEY",
+	}
+
 	response, err := api.GetResponse("+79963567210")
 	if err != nil {
 		log.Fatalln(err)
