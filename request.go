@@ -13,13 +13,13 @@ type Params struct {
 	ApiKey string
 }
 
-// GetRequest запрос данных
-func (m *Params) GetRequest(nubmer string) (Response, error) {
+// GetResponse получить ответ от API
+func (m *Params) GetResponse(nubmer string) (Response, error) {
 	if err := check.PhoneNumberStruct(nubmer); err != nil {
 		return Response{}, err
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
 	request, err := http.NewRequestWithContext(ctx, http.MethodGet, "https://api.numlookupapi.com/v1/validate/"+nubmer, nil)

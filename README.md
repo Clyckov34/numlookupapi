@@ -42,7 +42,7 @@ import (
 
 func main() {
 	var api = numlookupapi.Params{ApiKey: "API-KEY"}
-	response, err := api.GetRequest("+79963567210")
+	response, err := api.GetResponse("+79963567210")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -80,7 +80,7 @@ import (
 
 func main() {
 	var api = numlookupapi.Params{ApiKey: "API-KEY"}
-	response, err := api.GetRequest("+79963567210")
+	response, err := api.GetResponse("+79963567210")
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -119,4 +119,11 @@ Carrier: LLC Skartel (YOTA)
 Line Type: mobile
 ```
 
+</div>
+<div>
+	<h2>Заметки</h2>
+	<ul>
+		<li>Все номира должны начинаться со знака "+". Например: +79963567210</li>
+		<li>Чтобы получить API-KEY, зарегистрируйтесь в <a href="https://app.numlookupapi.com/dashboard">Личном кабинете</a>, и скопируйте ключ</li>
+	</ul>
 </div>
