@@ -1,12 +1,21 @@
-package check
+package numlookupapi
 
 import (
 	"errors"
 	"strings"
 )
 
-// PhoneNumberStruct проверка формат номера телефона
-func PhoneNumberStruct(number string) error {
+// checkAPIKey проверка ключа
+func checkAPIKey(apiKey string) error {
+	if len(apiKey) == 0 {
+		return errors.New("validation error: Нет в наличии ключа")
+	}
+
+	return nil
+}
+
+// checkPhoneNumber проверка формат номера телефона
+func checkPhoneNumber(number string) error {
 	split := strings.Split(number, "")
 
 	switch {
