@@ -41,29 +41,23 @@ import (
 )
 
 func main() {
-	var api = numlookupapi.Params{
+	var api = numlookupapi.Client{
 		ApiKey: "API-KEY",
 	}
 
-	response, err := api.GetResponse("+79963567210")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer response.Body.Close()
-
-	result, err := response.Data()
+	res, err := api.GetResponse("+79963567210")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	fmt.Println(result)
-}
+	fmt.Println(res)
+}	
 
 ```
 
 ```
 $ go run example.go
-{true 79963567210 9963567210 +79963567210 +7 RU Russian Federation Volgograd Oblast LLC Skartel (YOTA) mobile}
+&{true 79963567212 9963567212 +79963567212 +7 RU Russian Federation Volgograd Oblast LLC Skartel (YOTA) mobile}
 ```
 
 </div>
@@ -82,32 +76,28 @@ import (
 )
 
 func main() {
-	var api = numlookupapi.Params{
+	var api = numlookupapi.Client{
 		ApiKey: "API-KEY",
 	}
 
-	response, err := api.GetResponse("+79963567210")
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer response.Body.Close()
-
-	result, err := response.Data()
+	res, err := api.GetResponse("+79963567210")
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	fmt.Println("Valid:", result.Valid)
-	fmt.Println("Number:", result.Number)
-	fmt.Println("Local Format:", result.LocalFormat)
-	fmt.Println("International Format:", result.InternationalFormat)
-	fmt.Println("Country Prefix:", result.CountryPrefix)
-	fmt.Println("Country Code:", result.CountryCode)
-	fmt.Println("Country Name:", result.CountryName)
-	fmt.Println("Location:", result.Location)
-	fmt.Println("Carrier:", result.Carrier)
-	fmt.Println("Line Type:", result.LineType)
+	fmt.Println("Valid:", res.Valid)
+	fmt.Println("Number:", res.Number)
+	fmt.Println("Local Format:", res.LocalFormat)
+	fmt.Println("International Format:", res.InternationalFormat)
+	fmt.Println("Country Prefix:", res.CountryPrefix)
+	fmt.Println("Country Code:", res.CountryCode)
+	fmt.Println("Country Name:", res.CountryName)
+	fmt.Println("Location:", res.Location)
+	fmt.Println("Carrier:", res.Carrier)
+	fmt.Println("Line Type:", res.LineType)
+
 }
+
 
 ```
 

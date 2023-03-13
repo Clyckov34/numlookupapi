@@ -36,7 +36,7 @@ func (m *Client) GetResponse(nubmer string) (*Body, error) {
 		return nil, err
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 3 * time.Second)
 	defer cancel()
 
 	request, err := http.NewRequestWithContext(ctx, http.MethodGet, "https://api.numlookupapi.com/v1/validate/"+nubmer, nil)
