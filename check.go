@@ -2,7 +2,6 @@ package numlookupapi
 
 import (
 	"errors"
-	"strings"
 )
 
 // checkAPIKey проверка ключа
